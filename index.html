@@ -1,33 +1,1118 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Production · System Status</title>
-  <!-- Tailwind CSS via CDN (production-ready) -->
+  <!-- Document Metadata -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soren Support | Digital Support & Brand Transformation</title>
+  <meta name="description" content="Hii I am Bhadab Soren, your local business converts into brandable business. Your Customer buy any product any where.">
+
+  <!-- Tailwind CSS CDN for modern responsive utility styling -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- tiny additional smoothness: default config is fine, but we keep it minimal -->
-</head>
-<body class="bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center min-h-screen m-0 font-sans text-slate-800 antialiased">
-  
-  <!-- main card – exactly as designed, but production-tailwind with link -->
-  <div class="bg-white p-10 rounded-2xl shadow-xl border border-slate-100 text-center max-w-sm w-full mx-4 transform transition-all hover:scale-[1.01]">
+
+  <!-- Google Fonts: Inter font for clean, elegant typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind Custom Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            // Primary Color: Deep Midnight Indigo
+            primary: '#0f172a',
+            // Secondary Color: Rich Royal Blue
+            secondary: '#2563eb',
+            // Accent Color: Bright Cyan/Teal
+            accent: '#06b6d4',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom CSS for Glassmorphism and Scroll Reveal Effects -->
+  <style>
+    /* Glassmorphism card effect */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
     
-    <!-- Animated Status Indicator -->
-    <div class="relative flex items-center justify-center w-16 h-16 mx-auto mb-6 bg-emerald-50 rounded-full">
-      <span class="absolute inline-flex w-10 h-10 bg-emerald-400 rounded-full opacity-75 animate-ping"></span>
-      <div class="relative flex items-center justify-center w-8 h-8 bg-emerald-500 rounded-full shadow-inner">
-        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
-        </svg>
+    /* Subtle hover glow for interactive cards */
+    .glass-card:hover {
+      border-color: rgba(6, 182, 212, 0.3);
+      box-shadow: 0 10px 30px -10px rgba(6, 182, 212, 0.2);
+    }
+
+    /* Scroll reveal base classes */
+    .reveal-item {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .reveal-item.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body class="bg-[#0b0f19] text-slate-200 font-sans antialiased overflow-x-hidden selection:bg-cyan-500 selection:text-white">
+
+  <!-- ================================================================= -->
+  <!-- SECTION: STICKY NAVIGATION BAR                                    -->
+  <!-- Purpose: Stays fixed at the top, holds brand logo and menu links. -->
+  <!-- ================================================================= -->
+  <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#0b0f19]/80 backdrop-blur-md border-b border-white/10" id="navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- ELEMENT: Business Logo and Brand Name -->
+        <a href="#hero" class="flex items-center space-x-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform">
+            S
+          </div>
+          <div>
+            <span class="text-xl font-extrabold tracking-tight text-white block">Soren <span class="text-cyan-400">Support</span></span>
+            <span class="text-[10px] tracking-wider text-slate-400 uppercase block font-medium">Digital Support Partner</span>
+          </div>
+        </a>
+
+        <!-- ELEMENT: Desktop Navigation Menu Links -->
+        <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+          <a href="#hero" class="hover:text-cyan-400 transition-colors">Home</a>
+          <a href="#about" class="hover:text-cyan-400 transition-colors">About</a>
+          <a href="#services" class="hover:text-cyan-400 transition-colors">Services</a>
+          <a href="#process" class="hover:text-cyan-400 transition-colors">How It Works</a>
+          <a href="#testimonials" class="hover:text-cyan-400 transition-colors">Reviews</a>
+          <a href="#faq" class="hover:text-cyan-400 transition-colors">FAQ</a>
+          <a href="#contact" class="hover:text-cyan-400 transition-colors">Contact</a>
+        </nav>
+
+        <!-- ELEMENT: Navbar WhatsApp CTA Button -->
+        <div class="hidden md:flex items-center">
+          <a href="https://wa.me/916372670736?text=Hello%20Bhadab%20Soren,%20I%20want%20to%20discuss%20my%20business%20growth." target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-full text-xs font-semibold bg-gradient-to-r from-cyan-500 to-blue-600 text-white hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 hover:scale-105">
+            Chat on WhatsApp
+          </a>
+        </div>
+
+        <!-- ELEMENT: Mobile Hamburger Menu Button -->
+        <div class="md:hidden flex items-center">
+          <button id="menu-toggle-btn" aria-label="Toggle navigation menu" class="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 focus:outline-none">
+            <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
 
-    <!-- Heading & Message -->
-    <h1 class="text-2xl font-bold tracking-tight text-slate-900">Website Live</h1>
-    <p class="text-sm text-slate-500 mt-2 leading-relaxed">Everything all right and ready.</p>
+    <!-- ELEMENT: Mobile Collapsible Menu -->
+    <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-6 bg-[#0f172a] border-b border-white/10 space-y-3">
+      <a href="#hero" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-cyan-500/10 hover:text-cyan-400">Home</a>
+      <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-cyan-500/10 hover:text-cyan-400">About</a>
+      <a href="#services" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-cyan-500/10 hover:text-cyan-400">Services</a>
+      <a href="#process" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-cyan-500/10 hover:text-cyan-400">How It Works</a>
+      <a href="#testimonials" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-cyan-500/10 hover:text-cyan-400">Reviews</a>
+      <a href="#faq" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-cyan-500/10 hover:text-cyan-400">FAQ</a>
+      <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-cyan-500/10 hover:text-cyan-400">Contact</a>
+      <a href="https://wa.me/916372670736?text=Hello%20Bhadab%20Soren,%20I%20want%20to%20discuss%20my%20business%20growth." target="_blank" rel="noopener noreferrer" class="block text-center mt-4 w-full py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold">
+        Quick WhatsApp Consultation
+      </a>
+    </div>
+  </header>
 
-     </div>
+
+  <!-- ================================================================= -->
+  <!-- SECTION: HERO SECTION                                             -->
+  <!-- Purpose: Grabs visitor attention with headline and action buttons.-->
+  <!-- ================================================================= -->
+  <section id="hero" class="relative pt-36 pb-20 md:pt-48 md:pb-32 overflow-hidden flex items-center min-h-[90vh]">
+    <!-- Decorative background glow spheres -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-1/3 left-1/4 w-80 h-80 bg-blue-600/15 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Hero Text Content -->
+        <div class="lg:col-span-7 text-center lg:text-left reveal-item">
+          <!-- Tagline Pill Badge -->
+          <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-semibold mb-6">
+            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+            <span>Your Customer Buy Any Product Anywhere</span>
+          </div>
+
+          <!-- Main Headline -->
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight mb-6">
+            Transform Your <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-300">Local Business</span> Into A Powerful Brand.
+          </h1>
+
+          <!-- Personal Introduction Paragraph -->
+          <p class="text-lg sm:text-xl text-slate-300 mb-8 max-w-2xl leading-relaxed mx-auto lg:mx-0">
+            Hi, I am <strong class="text-cyan-400 font-semibold">Bhadab Soren</strong>. I help offline and local shop owners build modern digital setups, reach nationwide customers, and maximize monthly sales.
+          </p>
+
+          <!-- Hero Action Buttons -->
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+            <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-xl text-sm font-semibold bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-xl shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105 transition-all text-center">
+              Start Your Digital Growth
+            </a>
+            <a href="#services" class="w-full sm:w-auto px-8 py-4 rounded-xl text-sm font-semibold glass-card text-slate-300 hover:text-white hover:bg-white/10 transition-all text-center">
+              Explore Services
+            </a>
+          </div>
+
+          <!-- Mini trust badge -->
+          <div class="mt-10 pt-8 border-t border-white/10 flex items-center justify-center lg:justify-start space-x-6 text-xs text-slate-400">
+            <div class="flex items-center space-x-2">
+              <span class="text-cyan-400 text-base">✓</span>
+              <span>24/7 Digital Support</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="text-cyan-400 text-base">✓</span>
+              <span>Local to Brand Strategy</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="text-cyan-400 text-base">✓</span>
+              <span>Mayurbhanj, Odisha</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Featured Visual -->
+        <div class="lg:col-span-5 reveal-item">
+          <div class="relative mx-auto max-w-md lg:max-w-none">
+            <!-- Background gradient border ring -->
+            <div class="absolute -inset-1.5 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl blur opacity-30"></div>
+            
+            <div class="relative glass-card rounded-2xl p-3 sm:p-4 overflow-hidden shadow-2xl">
+              <!--
+                =============================================================
+                IMAGE: Hero Section Showcase Image
+                Section: Hero
+                Purpose: Illustrates digital transformation and e-commerce growth.
+                How to replace: Change the 'src' URL to any preferred image link.
+                =============================================================
+              -->
+              <img 
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" 
+                alt="Digital Marketing and Business Analytics Dashboard" 
+                class="w-full h-80 object-cover rounded-xl"
+                loading="eager"
+              >
+              <!-- Floating Highlight Glass Box -->
+              <div class="absolute bottom-6 left-6 right-6 p-4 rounded-xl glass-card bg-slate-900/80 border border-white/15">
+                <div class="flex items-center space-x-3">
+                  <div class="w-3 h-3 rounded-full bg-emerald-400 animate-ping"></div>
+                  <span class="text-xs font-semibold text-emerald-300">Ready to Expand Your Reach</span>
+                </div>
+                <p class="text-xs text-slate-300 mt-1 font-normal">Connect directly with buyers across India via WhatsApp & Social Channels.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================================= -->
+  <!-- SECTION: STATISTICS / COUNTERS                                    -->
+  <!-- Purpose: Displays key business performance numbers and facts.     -->
+  <!-- ================================================================= -->
+  <section class="py-12 bg-[#0d1322] border-y border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        
+        <!-- Stat Item 1 -->
+        <div class="glass-card p-6 rounded-2xl reveal-item">
+          <div class="text-3xl sm:text-4xl font-extrabold text-cyan-400 mb-1">
+            <span class="counter" data-target="100">0</span>%
+          </div>
+          <p class="text-xs sm:text-sm text-slate-400 font-medium">Dedication to Local Growth</p>
+        </div>
+
+        <!-- Stat Item 2 -->
+        <div class="glass-card p-6 rounded-2xl reveal-item">
+          <div class="text-3xl sm:text-4xl font-extrabold text-blue-400 mb-1">
+            <span class="counter" data-target="24">0</span>/7
+          </div>
+          <p class="text-xs sm:text-sm text-slate-400 font-medium">Continuous Digital Support</p>
+        </div>
+
+        <!-- Stat Item 3 -->
+        <div class="glass-card p-6 rounded-2xl reveal-item">
+          <div class="text-3xl sm:text-4xl font-extrabold text-cyan-400 mb-1">
+            <span class="counter" data-target="10">0</span>x
+          </div>
+          <p class="text-xs sm:text-sm text-slate-400 font-medium">Customer Reach Expansion</p>
+        </div>
+
+        <!-- Stat Item 4 -->
+        <div class="glass-card p-6 rounded-2xl reveal-item">
+          <div class="text-3xl sm:text-4xl font-extrabold text-blue-400 mb-1">
+            <span class="counter" data-target="757091">0</span>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-400 font-medium">Mayurbhanj Hub Pin</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================================= -->
+  <!-- SECTION: ABOUT US                                                 -->
+  <!-- Purpose: Shares the founder's mission, story, and core values.    -->
+  <!-- ================================================================= -->
+  <section id="about" class="py-24 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- About Image Column -->
+        <div class="lg:col-span-5 reveal-item order-2 lg:order-1">
+          <div class="relative">
+            <div class="absolute -inset-2 bg-gradient-to-tr from-cyan-500 to-indigo-600 rounded-3xl blur-md opacity-25"></div>
+            <div class="relative glass-card rounded-2xl p-4">
+              <!--
+                =============================================================
+                IMAGE: About Us Founder / Workplace Portrait Image
+                Section: About Us
+                Purpose: Represents personal consulting and direct support.
+                How to replace: Change the 'src' URL to your own portrait or office photo.
+                =============================================================
+              -->
+              <img 
+                src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80" 
+                alt="Bhadab Soren Business Consultation Session" 
+                class="w-full h-96 object-cover rounded-xl shadow-lg"
+                loading="lazy"
+              >
+              <!-- Founder Badge -->
+              <div class="mt-4 p-4 rounded-xl bg-slate-900/90 border border-white/10 flex items-center justify-between">
+                <div>
+                  <h4 class="font-bold text-white text-base">Bhadab Soren</h4>
+                  <p class="text-xs text-cyan-400">Founder & Brand Consultant</p>
+                </div>
+                <span class="px-3 py-1 rounded-full text-[11px] bg-cyan-500/20 text-cyan-300 font-medium border border-cyan-500/30">Mayurbhanj, Odisha</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- About Text Column -->
+        <div class="lg:col-span-7 reveal-item order-1 lg:order-2">
+          <!-- Section Pre-title -->
+          <div class="text-cyan-400 text-xs font-extrabold uppercase tracking-widest mb-3">About Soren Support</div>
+          
+          <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6 leading-tight">
+            Bridging The Gap Between Local Retailers And Modern Digital Buyers.
+          </h2>
+
+          <p class="text-slate-300 leading-relaxed mb-6">
+            Small and local businesses often have the best quality products, but they struggle to reach customers outside their immediate neighborhood. That is where <strong>Soren Support</strong> steps in.
+          </p>
+
+          <p class="text-slate-400 leading-relaxed mb-8">
+            Based in Mayurbhanj, Odisha, our clear mission is to turn local shops into credible, high-trust digital brands. Whether it is social media visibility, online catalogs, or seamless WhatsApp order flows, we provide direct 24/7 support so your customers can find and purchase your products anytime, anywhere.
+          </p>
+
+          <!-- Core Feature Bullets -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+            <div class="flex items-start space-x-3">
+              <div class="p-2 rounded-lg bg-cyan-500/10 text-cyan-400 mt-1">✓</div>
+              <div>
+                <h5 class="text-sm font-semibold text-white">Direct Personal Guidance</h5>
+                <p class="text-xs text-slate-400">No complex jargon; simple steps for business owners.</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3">
+              <div class="p-2 rounded-lg bg-cyan-500/10 text-cyan-400 mt-1">✓</div>
+              <div>
+                <h5 class="text-sm font-semibold text-white">Full Digital Setup</h5>
+                <p class="text-xs text-slate-400">From product catalogs to Google business presence.</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3">
+              <div class="p-2 rounded-lg bg-cyan-500/10 text-cyan-400 mt-1">✓</div>
+              <div>
+                <h5 class="text-sm font-semibold text-white">24/7 Active Support</h5>
+                <p class="text-xs text-slate-400">We are always a single phone call or WhatsApp ping away.</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3">
+              <div class="p-2 rounded-lg bg-cyan-500/10 text-cyan-400 mt-1">✓</div>
+              <div>
+                <h5 class="text-sm font-semibold text-white">Affordable & Scalable</h5>
+                <p class="text-xs text-slate-400">Designed specifically for Indian MSMEs & local traders.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Quick Call Button -->
+          <a href="tel:6372670736" class="inline-flex items-center space-x-2 text-sm font-semibold text-cyan-400 hover:text-cyan-300">
+            <span>Talk directly with Bhadab Soren: +91 6372670736</span>
+            <span>&rarr;</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================================= -->
+  <!-- SECTION: SERVICES OFFERED                                         -->
+  <!-- Purpose: Highlights the primary digital support packages provided.-->
+  <!-- ================================================================= -->
+  <section id="services" class="py-24 bg-[#0d1322]/60 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-16 reveal-item">
+        <span class="text-cyan-400 text-xs font-extrabold uppercase tracking-widest">What We Do</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2 mb-4">Complete Digital Support Services</h2>
+        <p class="text-slate-400 text-sm sm:text-base">We equip offline and local businesses with the right digital tools to attract customers, take orders, and establish long-term trust.</p>
+      </div>
+
+      <!-- Services Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- SERVICE CARD 1: Brand Strategy & Identity -->
+        <div class="glass-card rounded-2xl p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 reveal-item">
+          <div>
+            <!--
+              =============================================================
+              IMAGE: Service 1 - Branding & Graphic Identity Image
+              Section: Services
+              Purpose: Represents business branding, logos, and digital identity.
+              How to replace: Change the 'src' URL to any relevant branding graphic.
+              =============================================================
+            -->
+            <img 
+              src="https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=600&q=80" 
+              alt="Brand Strategy and Business Identity" 
+              class="w-full h-44 object-cover rounded-xl mb-6 shadow-md"
+              loading="lazy"
+            >
+            <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">Service 01</span>
+            <h3 class="text-xl font-bold text-white mt-1 mb-3">Brand Transformation</h3>
+            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+              Turn your local store into a recognized brand with consistent visual styling, digital product catalogues, Google Maps listing, and brand trust assets.
+            </p>
+          </div>
+          <a href="#contact" class="text-xs font-semibold text-cyan-400 flex items-center space-x-1 hover:underline">
+            <span>Request Brand Audit</span>
+            <span>&rarr;</span>
+          </a>
+        </div>
+
+        <!-- SERVICE CARD 2: Online Sales & WhatsApp Systems -->
+        <div class="glass-card rounded-2xl p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 reveal-item">
+          <div>
+            <!--
+              =============================================================
+              IMAGE: Service 2 - Online Commerce & WhatsApp Order System
+              Section: Services
+              Purpose: Represents customer orders, mobile commerce, and WhatsApp.
+              How to replace: Change the 'src' URL to an e-commerce or phone mock-up.
+              =============================================================
+            -->
+            <img 
+              src="https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=600&q=80" 
+              alt="Mobile Commerce and Order Processing" 
+              class="w-full h-44 object-cover rounded-xl mb-6 shadow-md"
+              loading="lazy"
+            >
+            <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">Service 02</span>
+            <h3 class="text-xl font-bold text-white mt-1 mb-3">WhatsApp Order Flow</h3>
+            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+              Empower your customers to buy any product from anywhere with streamlined WhatsApp product catalogs, automated responses, and fast UPI payment links.
+            </p>
+          </div>
+          <a href="#contact" class="text-xs font-semibold text-cyan-400 flex items-center space-x-1 hover:underline">
+            <span>Setup Order System</span>
+            <span>&rarr;</span>
+          </a>
+        </div>
+
+        <!-- SERVICE CARD 3: 24/7 Digital Support & Marketing -->
+        <div class="glass-card rounded-2xl p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 reveal-item">
+          <div>
+            <!--
+              =============================================================
+              IMAGE: Service 3 - Ongoing 24/7 Marketing & Digital Support
+              Section: Services
+              Purpose: Illustrates technical assistance and social media reach.
+              How to replace: Change the 'src' URL to a customer support photo.
+              =============================================================
+            -->
+            <img 
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" 
+              alt="Continuous Marketing and Customer Support" 
+              class="w-full h-44 object-cover rounded-xl mb-6 shadow-md"
+              loading="lazy"
+            >
+            <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">Service 03</span>
+            <h3 class="text-xl font-bold text-white mt-1 mb-3">24/7 Growth & Support</h3>
+            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+              Never worry about technical roadblocks. We manage social promotions, keep customer engagement active, and resolve your digital challenges round the clock.
+            </p>
+          </div>
+          <a href="#contact" class="text-xs font-semibold text-cyan-400 flex items-center space-x-1 hover:underline">
+            <span>Get Dedicated Support</span>
+            <span>&rarr;</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================================= -->
+  <!-- SECTION: HOW IT WORKS / PROCESS                                   -->
+  <!-- Purpose: Step-by-step roadmap showing how Soren Support helps.    -->
+  <!-- ================================================================= -->
+  <section id="process" class="py-24 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Title -->
+      <div class="text-center max-w-2xl mx-auto mb-16 reveal-item">
+        <span class="text-cyan-400 text-xs font-extrabold uppercase tracking-widest">Process</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2 mb-4">How We Convert Your Business</h2>
+        <p class="text-slate-400 text-sm">Four simple steps to transform your physical shop into an online brand.</p>
+      </div>
+
+      <!-- Process Steps Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Step 1 -->
+        <div class="glass-card p-6 rounded-2xl reveal-item border-t-2 border-t-cyan-400">
+          <span class="text-3xl font-black text-cyan-400/40">01</span>
+          <h4 class="text-lg font-bold text-white mt-2 mb-2">Discovery Call</h4>
+          <p class="text-xs text-slate-300 leading-relaxed">We understand your local products, pricing, and current customer base via phone or WhatsApp.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="glass-card p-6 rounded-2xl reveal-item border-t-2 border-t-blue-400">
+          <span class="text-3xl font-black text-blue-400/40">02</span>
+          <h4 class="text-lg font-bold text-white mt-2 mb-2">Digital Setup</h4>
+          <p class="text-xs text-slate-300 leading-relaxed">We create professional profiles, digital catalogs, and verify your business on Google Search & Maps.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="glass-card p-6 rounded-2xl reveal-item border-t-2 border-t-cyan-400">
+          <span class="text-3xl font-black text-cyan-400/40">03</span>
+          <h4 class="text-lg font-bold text-white mt-2 mb-2">Promotion & Orders</h4>
+          <p class="text-xs text-slate-300 leading-relaxed">We launch targeted digital promotions to bring buyer inquiries straight into your WhatsApp inbox.</p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="glass-card p-6 rounded-2xl reveal-item border-t-2 border-t-blue-400">
+          <span class="text-3xl font-black text-blue-400/40">04</span>
+          <h4 class="text-lg font-bold text-white mt-2 mb-2">24/7 Brand Support</h4>
+          <p class="text-xs text-slate-300 leading-relaxed">We monitor inquiries, update your product offerings, and keep your brand growing month after month.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================================= -->
+  <!-- SECTION: TESTIMONIALS / REVIEWS                                   -->
+  <!-- Purpose: Builds social proof with quotes from satisfied clients.  -->
+  <!-- ================================================================= -->
+  <section id="testimonials" class="py-24 bg-[#0d1322]/50 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Title -->
+      <div class="text-center max-w-2xl mx-auto mb-16 reveal-item">
+        <span class="text-cyan-400 text-xs font-extrabold uppercase tracking-widest">Testimonials</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2 mb-4">What Our Clients Say</h2>
+        <p class="text-slate-400 text-sm">Real experiences from local store owners and entrepreneurs we have supported.</p>
+      </div>
+
+      <!-- Testimonials Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- TESTIMONIAL 1 -->
+        <div class="glass-card p-8 rounded-2xl flex flex-col justify-between reveal-item">
+          <div>
+            <div class="text-cyan-400 text-sm mb-4">★★★★★</div>
+            <p class="text-slate-300 text-sm italic leading-relaxed mb-6">
+              "Before Bhadab Soren helped us, our shop only had local walking customers. Now customers from neighboring districts order our products through WhatsApp effortlessly!"
+            </p>
+          </div>
+          <div class="flex items-center space-x-4 pt-4 border-t border-white/10">
+            <!--
+              =============================================================
+              IMAGE: Testimonial Customer 1 Avatar
+              Section: Testimonials
+              Purpose: Displays photo of customer Rajesh Nayak.
+              How to replace: Change the 'src' URL to your client's avatar.
+              =============================================================
+            -->
+            <img 
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" 
+              alt="Rajesh Nayak - Grocery Merchant" 
+              class="w-12 h-12 rounded-full object-cover border border-cyan-400/40"
+              loading="lazy"
+            >
+            <div>
+              <h5 class="text-sm font-bold text-white">Rajesh Nayak</h5>
+              <p class="text-xs text-slate-400">Retail Store Owner, Baripada</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TESTIMONIAL 2 -->
+        <div class="glass-card p-8 rounded-2xl flex flex-col justify-between reveal-item">
+          <div>
+            <div class="text-cyan-400 text-sm mb-4">★★★★★</div>
+            <p class="text-slate-300 text-sm italic leading-relaxed mb-6">
+              "Soren Support's tagline is 100% accurate: 'Your Customer buy any product any where'. Our handcrafted goods now ship all over Odisha thanks to their guidance."
+            </p>
+          </div>
+          <div class="flex items-center space-x-4 pt-4 border-t border-white/10">
+            <!--
+              =============================================================
+              IMAGE: Testimonial Customer 2 Avatar
+              Section: Testimonials
+              Purpose: Displays photo of customer Priya Mohanty.
+              How to replace: Change the 'src' URL to your client's avatar.
+              =============================================================
+            -->
+            <img 
+              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" 
+              alt="Priya Mohanty - Handicraft Business" 
+              class="w-12 h-12 rounded-full object-cover border border-cyan-400/40"
+              loading="lazy"
+            >
+            <div>
+              <h5 class="text-sm font-bold text-white">Priya Mohanty</h5>
+              <p class="text-xs text-slate-400">Handloom & Crafts Entrepreneur</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TESTIMONIAL 3 -->
+        <div class="glass-card p-8 rounded-2xl flex flex-col justify-between reveal-item">
+          <div>
+            <div class="text-cyan-400 text-sm mb-4">★★★★★</div>
+            <p class="text-slate-300 text-sm italic leading-relaxed mb-6">
+              "Bhadab's 24/7 availability is unmatched. Whenever I have an issue with customer orders or WhatsApp catalog updates, he fixes it immediately."
+            </p>
+          </div>
+          <div class="flex items-center space-x-4 pt-4 border-t border-white/10">
+            <!--
+              =============================================================
+              IMAGE: Testimonial Customer 3 Avatar
+              Section: Testimonials
+              Purpose: Displays photo of customer Santosh Murmu.
+              How to replace: Change the 'src' URL to your client's avatar.
+              =============================================================
+            -->
+            <img 
+              src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" 
+              alt="Santosh Murmu - Electronics Dealer" 
+              class="w-12 h-12 rounded-full object-cover border border-cyan-400/40"
+              loading="lazy"
+            >
+            <div>
+              <h5 class="text-sm font-bold text-white">Santosh Murmu</h5>
+              <p class="text-xs text-slate-400">Hardware & Electronics Supplier</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================================= -->
+  <!-- SECTION: FREQUENTLY ASKED QUESTIONS (FAQ)                         -->
+  <!-- Purpose: Answers common questions to reduce customer doubt.       -->
+  <!-- ================================================================= -->
+  <section id="faq" class="py-24 relative">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Title -->
+      <div class="text-center mb-16 reveal-item">
+        <span class="text-cyan-400 text-xs font-extrabold uppercase tracking-widest">Got Questions?</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2 mb-4">Frequently Asked Questions</h2>
+        <p class="text-slate-400 text-sm">Everything you need to know about Soren Support's digital services.</p>
+      </div>
+
+      <!-- FAQ Accordion List -->
+      <div class="space-y-4 reveal-item">
+        
+        <!-- FAQ 1 -->
+        <div class="glass-card rounded-xl overflow-hidden faq-item">
+          <button class="w-full px-6 py-5 text-left font-semibold text-white flex justify-between items-center focus:outline-none faq-btn" onclick="toggleFaq(this)">
+            <span>How does Soren Support turn my local shop into a brand?</span>
+            <span class="text-cyan-400 text-xl font-bold faq-icon">+</span>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-sm text-slate-300 leading-relaxed border-t border-white/5 pt-3">
+            We build your online visibility from the ground up: creating official social pages, setting up an easily shareable digital product catalog, registering your location on Google Maps, and configuring automated WhatsApp order channels.
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="glass-card rounded-xl overflow-hidden faq-item">
+          <button class="w-full px-6 py-5 text-left font-semibold text-white flex justify-between items-center focus:outline-none faq-btn" onclick="toggleFaq(this)">
+            <span>Do I need technical skills or a computer to get started?</span>
+            <span class="text-cyan-400 text-xl font-bold faq-icon">+</span>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-sm text-slate-300 leading-relaxed border-t border-white/5 pt-3">
+            No technical knowledge is needed! All you need is a basic smartphone with WhatsApp. We handle all the setup, technical configurations, and maintenance for you.
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="glass-card rounded-xl overflow-hidden faq-item">
+          <button class="w-full px-6 py-5 text-left font-semibold text-white flex justify-between items-center focus:outline-none faq-btn" onclick="toggleFaq(this)">
+            <span>How does the WhatsApp order system work for my customers?</span>
+            <span class="text-cyan-400 text-xl font-bold faq-icon">+</span>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-sm text-slate-300 leading-relaxed border-t border-white/5 pt-3">
+            Customers click your personalized link or scan your QR code. Your products appear with prices and photos, and when they pick an item, a formatted WhatsApp message is generated directly to your phone for instant confirmation and payment.
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="glass-card rounded-xl overflow-hidden faq-item">
+          <button class="w-full px-6 py-5 text-left font-semibold text-white flex justify-between items-center focus:outline-none faq-btn" onclick="toggleFaq(this)">
+            <span>What are your working hours and support availability?</span>
+            <span class="text-cyan-400 text-xl font-bold faq-icon">+</span>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-sm text-slate-300 leading-relaxed border-t border-white/5 pt-3">
+            Soren Support is active 24/7. You can contact Bhadab Soren at +91 6372670736 at any time via call or WhatsApp.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================================= -->
+  <!-- SECTION: CALL TO ACTION (CTA)                                     -->
+  <!-- Purpose: High-impact banner urging the visitor to take action.   -->
+  <!-- ================================================================= -->
+  <section class="py-16 relative">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="glass-card rounded-3xl p-8 sm:p-14 relative overflow-hidden bg-gradient-to-r from-blue-900/40 via-cyan-900/30 to-slate-900/40 border border-cyan-500/20 text-center reveal-item">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Ready To Make Your Business Brandable?</h2>
+        <p class="text-slate-300 max-w-xl mx-auto mb-8 text-sm sm:text-base">
+          Stop relying only on walk-in clients. Let your customers buy your products from anywhere in India with Soren Support.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-xl text-sm font-bold bg-cyan-400 text-slate-950 hover:bg-cyan-300 transition-colors shadow-lg shadow-cyan-400/20">
+            Get In Touch Today
+          </a>
+          <a href="https://wa.me/916372670736?text=Hi%20Bhadab,%20I'm%20ready%20to%20grow%20my%20business." target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-4 rounded-xl text-sm font-bold glass-card text-white hover:bg-white/10 transition-all">
+            Direct WhatsApp Chat
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================================= -->
+  <!-- SECTION: CONTACT FORM & LOCATION                                  -->
+  <!-- Purpose: Provides direct message-to-WhatsApp form and location.  -->
+  <!-- ================================================================= -->
+  <section id="contact" class="py-24 bg-[#0d1322]/80 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Title -->
+      <div class="text-center max-w-2xl mx-auto mb-16 reveal-item">
+        <span class="text-cyan-400 text-xs font-extrabold uppercase tracking-widest">Connect With Us</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2 mb-4">Send Us A Message</h2>
+        <p class="text-slate-400 text-sm">Fill out the form below and your inquiry will automatically open in WhatsApp ready to send to Bhadab Soren.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- Contact Information & Details Column -->
+        <div class="lg:col-span-5 space-y-6 reveal-item">
+          
+          <div class="glass-card p-6 rounded-2xl">
+            <h4 class="text-lg font-bold text-white mb-4">Direct Contact Details</h4>
+            
+            <div class="space-y-4 text-sm">
+              <!-- Phone -->
+              <div class="flex items-center space-x-3">
+                <div class="w-9 h-9 rounded-lg bg-cyan-500/10 flex items-center justify-center text-cyan-400">📞</div>
+                <div>
+                  <div class="text-xs text-slate-400">Phone / Call</div>
+                  <a href="tel:6372670736" class="text-white font-medium hover:text-cyan-400">+91 6372670736</a>
+                </div>
+              </div>
+
+              <!-- WhatsApp -->
+              <div class="flex items-center space-x-3">
+                <div class="w-9 h-9 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400">💬</div>
+                <div>
+                  <div class="text-xs text-slate-400">WhatsApp</div>
+                  <a href="https://wa.me/916372670736" target="_blank" class="text-white font-medium hover:text-emerald-400">+91 6372670736</a>
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="flex items-center space-x-3">
+                <div class="w-9 h-9 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">✉️</div>
+                <div>
+                  <div class="text-xs text-slate-400">Email Address</div>
+                  <a href="mailto:bhadabsoren@gmail.com" class="text-white font-medium hover:text-cyan-400 break-all">bhadabsoren@gmail.com</a>
+                </div>
+              </div>
+
+              <!-- Location Address -->
+              <div class="flex items-center space-x-3">
+                <div class="w-9 h-9 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400">📍</div>
+                <div>
+                  <div class="text-xs text-slate-400">Address</div>
+                  <span class="text-white font-medium">Mayurbhanj, Odisha, India, PIN - 757091</span>
+                </div>
+              </div>
+
+              <!-- Working Hours -->
+              <div class="flex items-center space-x-3">
+                <div class="w-9 h-9 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400">⏰</div>
+                <div>
+                  <div class="text-xs text-slate-400">Working Hours</div>
+                  <span class="text-white font-medium">24/7 Available</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ELEMENT: Embedded Map Box -->
+          <div class="glass-card p-3 rounded-2xl overflow-hidden">
+            <h5 class="text-xs font-semibold text-slate-400 px-3 py-2 uppercase">Service Region: Mayurbhanj, Odisha</h5>
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d471556.7431526437!2d86.08272844111306!3d22.257321526017267!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1e2f7ea89408bf%3A0xc3cf3f9cb9086f6a!2sMayurbhanj%2C%20Odisha!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+              class="w-full h-48 rounded-xl border border-white/10"
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Soren Support Location Mayurbhanj Odisha">
+            </iframe>
+          </div>
+
+        </div>
+
+        <!-- Contact Form Column (Submits directly to WhatsApp) -->
+        <div class="lg:col-span-7 reveal-item">
+          <div class="glass-card p-8 sm:p-10 rounded-2xl">
+            <h3 class="text-2xl font-bold text-white mb-2">Send WhatsApp Inquiry</h3>
+            <p class="text-slate-400 text-xs sm:text-sm mb-6">Enter your details and click submit. You will be redirected straight to WhatsApp with your prepared inquiry.</p>
+
+            <!-- FORM START -->
+            <form id="whatsapp-contact-form" onsubmit="submitToWhatsApp(event)" class="space-y-5">
+              
+              <!-- Input: User Name -->
+              <div>
+                <label for="user_name" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Your Name</label>
+                <input 
+                  type="text" 
+                  id="user_name" 
+                  name="user_name" 
+                  placeholder="e.g. Rahul Sharma" 
+                  required 
+                  class="w-full px-4 py-3 rounded-xl bg-slate-900/70 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 text-sm transition-all"
+                >
+              </div>
+
+              <!-- Input: Phone Number -->
+              <div>
+                <label for="user_phone" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Your Phone Number</label>
+                <input 
+                  type="tel" 
+                  id="user_phone" 
+                  name="user_phone" 
+                  placeholder="e.g. 9876543210" 
+                  required 
+                  class="w-full px-4 py-3 rounded-xl bg-slate-900/70 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 text-sm transition-all"
+                >
+              </div>
+
+              <!-- Input: Message -->
+              <div>
+                <label for="user_message" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Your Business Need / Message</label>
+                <textarea 
+                  id="user_message" 
+                  name="user_message" 
+                  rows="4" 
+                  placeholder="e.g. Hi Bhadab, I own a grocery/apparel shop in Odisha and I want to sell online..." 
+                  required 
+                  class="w-full px-4 py-3 rounded-xl bg-slate-900/70 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 text-sm transition-all resize-none"
+                ></textarea>
+              </div>
+
+              <!-- Submit Button -->
+              <button 
+                type="submit" 
+                class="w-full py-4 rounded-xl text-sm font-bold bg-gradient-to-r from-emerald-500 to-teal-600 text-white hover:from-emerald-400 hover:to-teal-500 shadow-lg shadow-emerald-500/25 transition-all flex items-center justify-center space-x-2"
+              >
+                <span>Send via WhatsApp Now</span>
+                <span>💬</span>
+              </button>
+
+              <p class="text-[11px] text-slate-400 text-center">
+                Clicking will open WhatsApp web or app with your pre-filled inquiry to +91 6372670736.
+              </p>
+            </form>
+            <!-- FORM END -->
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================================= -->
+  <!-- SECTION: FOOTER                                                   -->
+  <!-- Purpose: Bottom credits, social media links, and copyright info.  -->
+  <!-- ================================================================= -->
+  <footer class="bg-[#080b12] border-t border-white/10 pt-16 pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-white/5">
+        
+        <!-- Brand Summary Column -->
+        <div class="md:col-span-2 space-y-4">
+          <div class="flex items-center space-x-3">
+            <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-white font-black text-base shadow">
+              S
+            </div>
+            <span class="text-xl font-black text-white">Soren <span class="text-cyan-400">Support</span></span>
+          </div>
+          <p class="text-xs text-slate-400 max-w-sm leading-relaxed">
+            Your Customer buy any product any where. Hii I am Bhadab Soren, your local business converts into brandable business.
+          </p>
+          <div class="text-xs text-slate-400">
+            📍 Mayurbhanj, Odisha, India - PIN 757091 | ⏰ 24/7 Available
+          </div>
+        </div>
+
+        <!-- Navigation Links Column -->
+        <div>
+          <h5 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Quick Links</h5>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="#hero" class="hover:text-cyan-400 transition-colors">Home</a></li>
+            <li><a href="#about" class="hover:text-cyan-400 transition-colors">About Bhadab Soren</a></li>
+            <li><a href="#services" class="hover:text-cyan-400 transition-colors">Digital Services</a></li>
+            <li><a href="#process" class="hover:text-cyan-400 transition-colors">How It Works</a></li>
+            <li><a href="#faq" class="hover:text-cyan-400 transition-colors">FAQ</a></li>
+          </ul>
+        </div>
+
+        <!-- Social Media Column -->
+        <div>
+          <h5 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Connect With Bhadab</h5>
+          <div class="flex flex-wrap gap-2 text-xs">
+            <!-- Facebook Link -->
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-lg glass-card text-slate-300 hover:text-cyan-400 transition-colors">Facebook</a>
+            <!-- Instagram Link -->
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-lg glass-card text-slate-300 hover:text-cyan-400 transition-colors">Instagram</a>
+            <!-- YouTube Link -->
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-lg glass-card text-slate-300 hover:text-cyan-400 transition-colors">YouTube</a>
+            <!-- LinkedIn Link -->
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-lg glass-card text-slate-300 hover:text-cyan-400 transition-colors">LinkedIn</a>
+            <!-- X / Twitter Link -->
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-lg glass-card text-slate-300 hover:text-cyan-400 transition-colors">X (Twitter)</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Copyright Note -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+        <p>&copy; <span id="current-year"></span> Soren Support. All rights reserved.</p>
+        <p class="text-slate-400">Created for Bhadab Soren • Mayurbhanj, Odisha</p>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ================================================================= -->
+  <!-- VANILLA JAVASCRIPT LOGIC                                          -->
+  <!-- Purpose: Clean, readable, beginner-friendly interactive scripts.  -->
+  <!-- ================================================================= -->
+  <script>
+    // -------------------------------------------------------------
+    // Set Dynamic Copyright Year in Footer
+    // -------------------------------------------------------------
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // -------------------------------------------------------------
+    // Mobile Menu Toggle
+    // Opens and closes the navigation menu on mobile screens.
+    // -------------------------------------------------------------
+    const menuToggleBtn = document.getElementById('menu-toggle-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    menuToggleBtn.addEventListener('click', function() {
+      const isClosed = mobileMenu.classList.contains('hidden');
+      if (isClosed) {
+        mobileMenu.classList.remove('hidden');
+        hamburgerIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+      } else {
+        mobileMenu.classList.add('hidden');
+        hamburgerIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      }
+    });
+
+    // Close mobile menu when clicking any nav link
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+    mobileNavLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        mobileMenu.classList.add('hidden');
+        hamburgerIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      });
+    });
+
+    // -------------------------------------------------------------
+    // WhatsApp Form Submission
+    // Redirects users to WhatsApp with their message and contact details.
+    // -------------------------------------------------------------
+    function submitToWhatsApp(event) {
+      // Stop the browser from submitting the traditional HTML form
+      event.preventDefault();
+
+      // Read form input values
+      const userName = document.getElementById('user_name').value.trim();
+      const userPhone = document.getElementById('user_phone').value.trim();
+      const userMessage = document.getElementById('user_message').value.trim();
+
+      // Business WhatsApp number with country code for India (91)
+      const businessPhone = "916372670736";
+
+      // Build the formatted text message
+      const formattedMessage = `Hello Bhadab Soren,\n\n*New Inquiry from Soren Support Website:*\n*Name:* ${userName}\n*Phone:* ${userPhone}\n*Message:* ${userMessage}\n\nPlease get back to me. Thank you!`;
+
+      // Encode the text into URL-safe format
+      const encodedText = encodeURIComponent(formattedMessage);
+
+      // Create WhatsApp destination URL
+      const whatsappURL = `https://wa.me/${businessPhone}?text=${encodedText}`;
+
+      // Open WhatsApp in a new browser tab or trigger the mobile app
+      window.open(whatsappURL, '_blank');
+    }
+
+    // -------------------------------------------------------------
+    // FAQ Accordion Toggle
+    // Expands or collapses question answers on click.
+    // -------------------------------------------------------------
+    function toggleFaq(buttonElement) {
+      const content = buttonElement.nextElementSibling;
+      const icon = buttonElement.querySelector('.faq-icon');
+      const isHidden = content.classList.contains('hidden');
+
+      // Close all other open FAQ drawers first
+      const allContents = document.querySelectorAll('.faq-content');
+      const allIcons = document.querySelectorAll('.faq-icon');
+      allContents.forEach(c => c.classList.add('hidden'));
+      allIcons.forEach(i => i.textContent = '+');
+
+      // Open the clicked one if it was hidden
+      if (isHidden) {
+        content.classList.remove('hidden');
+        icon.textContent = '−';
+      }
+    }
+
+    // -------------------------------------------------------------
+    // Scroll Reveal Animation
+    // Makes sections appear smoothly when the user scrolls down.
+    // -------------------------------------------------------------
+    function revealOnScroll() {
+      const reveals = document.querySelectorAll('.reveal-item');
+      const windowHeight = window.innerHeight;
+      const revealPoint = 100;
+
+      reveals.forEach(function(item) {
+        const itemTop = item.getBoundingClientRect().top;
+        if (itemTop < windowHeight - revealPoint) {
+          item.classList.add('revealed');
+        }
+      });
+    }
+
+    // Listen to page scroll event
+    window.addEventListener('scroll', revealOnScroll);
+    // Run once on load to reveal elements currently on screen
+    window.addEventListener('load', revealOnScroll);
+
+    // -------------------------------------------------------------
+    // Animated Counters
+    // Increases numbers smoothly when the statistics section is in view.
+    // -------------------------------------------------------------
+    let countersStarted = false;
+
+    function animateCounters() {
+      const counterElements = document.querySelectorAll('.counter');
+      if (counterElements.length === 0) return;
+
+      const firstCounter = counterElements[0];
+      const position = firstCounter.getBoundingClientRect().top;
+
+      // Trigger counting only once when scrolled into view
+      if (position < window.innerHeight && !countersStarted) {
+        countersStarted = true;
+
+        counterElements.forEach(function(counter) {
+          const target = parseInt(counter.getAttribute('data-target'), 10);
+          let current = 0;
+          const increment = Math.ceil(target / 40); // speed factor
+
+          const timer = setInterval(function() {
+            current += increment;
+            if (current >= target) {
+              counter.textContent = target;
+              clearInterval(timer);
+            } else {
+              counter.textContent = current;
+            }
+          }, 30);
+        });
+      }
+    }
+
+    // Listen to scroll for counter activation
+    window.addEventListener('scroll', animateCounters);
+    window.addEventListener('load', animateCounters);
+  </script>
 
 </body>
 </html>
